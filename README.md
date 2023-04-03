@@ -1,1 +1,1 @@
-# lego-arm
+# lego-arm-group3 (PA1473)
