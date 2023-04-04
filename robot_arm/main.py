@@ -16,7 +16,7 @@ from pybricks.ev3devices import Motor, TouchSensor, ColorSensor
 from pybricks.parameters import Port, Stop, Direction
 from pybricks.tools import wait
 
-#test hej
+
 # Initialize the EV3 Brick
 ev3 = EV3Brick()
 
