@@ -20,10 +20,10 @@ arm_motor = Motor(Port.B)
 claw_motor = Motor(Port.A)
 color_sensor = ColorSensor(Port.S2)
 
-ev3.speker.beep()
+#ev3.speker.beep()
 
-#turning_motor.run_angle(70, -90, then=Stop.Hold)
-#arm_motor.run_until_staled(-100, then=Stop.COAST, duty_limit=50)
+# turning_motor.run_angle(70, -90, then=Stop.Hold)
+# arm_motor.run_until_staled(-100, then=Stop.COAST, duty_limit=50)
 
 # while True:
 #    print(color_sensor.color())
