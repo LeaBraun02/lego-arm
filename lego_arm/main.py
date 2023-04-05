@@ -25,30 +25,67 @@ ev3.speaker.beep()
 
 wait(10)
 
-elbow_motor.run_until_stalled(80, then=Stop.COAST, duty_limit=50)
+# elbow_motor.run_time(200,1000, then=Stop.HOLD)
 elbow_motor.run(15)
-wait(10)
-elbow_motor.reset_angle(10)
-elbow_motor.hold()
 
-base_motor.run(-60)
+# wait(10)
+# elbow_motor.reset_angle(10)
+# elbow_motor.hold()
+
+
+
+# ev3.speaker.beep()
+# base_motor.reset_angle(0)
+# base_motor.hold()
+
+# gripper_motor.run_until_stalled(200, then=Stop.COAST, duty_limit=50)
+# gripper_motor.reset_angle(0)
+# gripper_motor.run_target(200, -90)
+# gripper_motor.reset_angle(0)
+# elbow_motor.run_until_stalled(-80, then=Stop.HOLD, duty_limit=20)
+# elbow_motor.hold()
+
+# while not base_switch.pressed():
+#     base_motor.run(60)
+# base_motor.hold()
+
+# gripper_motor.run_until_stalled(200, then=Stop.HOLD, duty_limit=50)
+# gripper_motor.reset_angle(0)
+
+# elbow_motor.run_until_stalled(100, then=Stop.HOLD, duty_limit=20)
+
+# base_motor.run_until_stalled(-60, then=Stop.COAST, duty_limit=20)
+
+
+elbow_motor.run_until_stalled(-80, then=Stop.HOLD, duty_limit=20)
+
 while not base_switch.pressed():
-    wait(10)
-    ev3.speaker.beep()
-base_motor.reset_angle(0)
+    base_motor.run(60)
 base_motor.hold()
+base_motor.reset_angle(0)
+base_motor.run_target(-60,0)
 
 gripper_motor.run_until_stalled(200, then=Stop.COAST, duty_limit=50)
 gripper_motor.reset_angle(0)
 gripper_motor.run_target(200, -90)
 
-#turning_motor.run_angle(70, -180, then=Stop.COAST)
+elbow_motor.run_until_stalled(80, then=Stop.COAST, duty_limit=20)
 
-#arm_motor.run_until_stalled(-100, then=Stop.HOLD, duty_limit=20)
 
-#turning_motor.run_target(70,0, then=Stop.COAST)
+for i in range(30):
+    gripper_motor.run_until_stalled(200, then=Stop.BRAKE, duty_limit=70)
+    i=i+1
+elbow_motor.run_until_stalled(-80, then=Stop.HOLD, duty_limit=20)
+base_motor.run_angle(-60,400)
+gripper_motor.run_until_stalled(-200, then=Stop.BRAKE, duty_limit=70)
 
-# while True:
-#    print(turning_motor.angle())
-#    wait(500)
+
+# base_motor.run_angle(70, 180, then=Stop.COAST)
+
+
+# base_motor.run_target(70,0, then=Stop.COAST)
+
+# # while True:
+# #    print(turning_motor.angle())
+# #    wait(500)
 
