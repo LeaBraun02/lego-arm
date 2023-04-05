@@ -31,7 +31,7 @@ while not base_switch.pressed():
 base_motor.reset_angle(0)
 base_motor.hold()
 
-elbow_motor.run_time(-30, 80)
+elbow_motor.run_until_stalled(80, then=Stop.COAST, duty_limit=50)
 elbow_motor.run(15)
 wait(10)
 elbow_motor.reset_angle(0)
