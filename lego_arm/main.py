@@ -25,22 +25,23 @@ ev3.speaker.beep()
 
 wait(10)
 
-elbow_motor.run_until_stalled(80, then=Stop.COAST, duty_limit=50)
-elbow_motor.run(15)
+elbow_motor.run_until_stalled(-80, then=Stop.Hold, duty_limit=20)
 wait(10)
-elbow_motor.reset_angle(10)
 elbow_motor.hold()
+ev3.speaker.beep()
 
-base_motor.run(-60)
+base_motor.run(60)
 while not base_switch.pressed():
     wait(10)
-    ev3.speaker.beep()
 base_motor.reset_angle(0)
 base_motor.hold()
+ev3.speaker.beep()
 
 gripper_motor.run_until_stalled(200, then=Stop.COAST, duty_limit=50)
-gripper_motor.reset_angle(0)
-gripper_motor.run_target(200, -90)
+gripper_motor.hold()
+ev3.speaker.beep()
+
+
 
 #turning_motor.run_angle(70, -180, then=Stop.COAST)
 
