@@ -88,3 +88,36 @@ arm_motor.run_angle(90, -190, then=Stop.COAST)
 
 
 
+
+# Create your objects here.
+# Definitions
+ev3 = EV3Brick()
+turning_motor = Motor(Port.C)
+arm_motor = Motor(Port.B)
+claw_motor = Motor(Port.A)
+color_sensor = ColorSensor(Port.S2)
+touch = TouchSensor(Port.S1)
+
+
+ev3.speaker.say('hello World')
+arm_motor.run_angle(90, -190, then=Stop.HOLD)
+
+while not touch.pressed():
+    turning_motor.run_angle(50,50, then=Stop.HOLD)
+
+claw_motor.run_until_stalled(200, then=Stop.COAST, duty_limit=50)
+claw_motor.reset_angle(0)
+claw_motor.run_target(200, -90)
+arm_motor.run_angle(90, 190, then=Stop.HOLD)
+claw_motor.run_angle(50, 70, then=Stop.HOLD)
+arm_motor.run_angle(90, -190, then=Stop.HOLD)
+
+ev3.speaker.say(str(color_sensor.color()))
+
+turning_motor.run_angle(-90,300, then=Stop.COAST)
+arm_motor.run_angle(90, 190, then=Stop.HOLD)
+claw_motor.run_angle(50, -60, then=Stop.HOLD)
+arm_motor.run_angle(90, -190, then=Stop.COAST)
+
+
+
