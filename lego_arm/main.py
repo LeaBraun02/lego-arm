@@ -121,3 +121,46 @@ arm_motor.run_angle(90, -190, then=Stop.COAST)
 
 
 
+
+
+
+Right = 0 
+Middle = -310
+Left = -620
+
+
+# ev3.speaker.say('hello World')
+
+def robot_pick(place): 
+    arm_motor.run_until_stalled(-2000, then=Stop.HOLD, duty_limit=20)
+    arm_motor.reset_angle(0)
+    arm_motor.run_target(200, 320, then=Stop.HOLD)
+    
+    while not touch.pressed():
+        turning_motor.run_angle(50,50, then=Stop.HOLD)
+    turning_motor.reset_angle(0)
+
+    turning_motor.run_target(90, place, then=Stop.COAST)
+    
+    claw_motor.run_until_stalled(200, then=Stop.COAST, duty_limit=50)
+    claw_motor.reset_angle(0)
+    claw_motor.run_target(200, -90)
+
+    arm_motor.run_target(90, 465, then=Stop.HOLD)
+    claw_motor.run_target(200, -20, then=Stop.HOLD)
+    arm_motor.run_target(90, 320, then=Stop.HOLD)
+    
+
+
+
+def robot_release(place):
+    turning_motor.run_target(90, place, then=Stop.COAST)
+    arm_motor.run_target(90, 465, then=Stop.HOLD)
+    claw_motor.run_target(200, -90, then=Stop.HOLD)
+    arm_motor.run_target(90, 320, then=Stop.COAST)
+    
+
+
+robot_pick(Middle)
+ev3.speaker.say(str(color_sensor.color()))
+robot_release(Left)
